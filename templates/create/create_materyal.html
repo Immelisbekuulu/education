@@ -1,0 +1,16 @@
+
+{% extends  'base.html'  %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+   {{ form.media }}
+    {{ form.as_p }}
+
+  <button type="sumbmit" style="margin-top: 10px;" class="btn btn-primary">
+      create
+  </button>
+</form>
+{% endblock %}

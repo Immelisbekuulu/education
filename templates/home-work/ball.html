@@ -1,0 +1,12 @@
+{{ball.student}}
+{{ball.print_home_work|safe}}
+{{ball.ball}}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+
+  <button type="sumbmit" style="margin-top: 10px;" class="btn btn-primary">
+      create ball
+  </button>
+</form>

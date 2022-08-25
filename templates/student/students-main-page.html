@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Students Page</h1>
+
+{% for student in students %}
+    {{student}}
+{% endfor %}
+
+{% for group in group %}
+    {{group}}
+{% endfor %}
+
+</body>
+</html>

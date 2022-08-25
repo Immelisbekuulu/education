@@ -1,0 +1,9 @@
+{% for g in result_ball %}
+    {{ g.student }}<br>
+    {{ g.home_work }}<br>
+    {{ g.print_home_work|safe }}<br>
+    <a href="{% url 'ball' g.id %}">
+    {{ g.ball }}</a><br>
+    {{ g.create_data }}<br>
+    <hr>
+{% endfor %}

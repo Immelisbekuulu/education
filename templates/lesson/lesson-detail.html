@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/standart.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <h1>{{lesson.create_data}}</h1>
+
+
+        <p>{{lesson.daily_material.all|join:", "}}</p>
+
+    <h2>Home Work</h2>
+    {% for home_work in home_work %}
+        <a href="{% url 'home_work_detail' home_work.pk %}">{{home_work.text|safe}}</a>
+    {% endfor %}
+    </div>
+{% endblock %}

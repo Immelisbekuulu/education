@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head
+.container
+>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/standart.css' %}">
+
+</head>
+<body>
+<div class="container">
+    {% for student_groups in student_groups %}
+    <h1><a href="{% url 'studentgroup' student_groups.id %}">{{student_groups.group}}</a></h1>
+{% endfor %}
+
+{% for group in gr %}
+    <h1><a href="{% url 'studentgroup' group.id %}">{{group.group}}</a></h1>
+{% endfor %}
+
+{{student}}
+</div>
+
+</body>
+</html>

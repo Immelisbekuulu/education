@@ -1,0 +1,38 @@
+{% extends  'base.html'  %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+Названия: {{ group }}<br>
+Учебный Год: {{ group.study_year }}<br>
+Преподователь: {{ group.teacher }}<br>
+Дата создания: {{ group.create_data }}<br>
+<hr>
+Студенты: <hr>
+{% for  g in studentGroup%}
+{{ g.student }}<br>
+{{ g.group }}<br>
+{{ g.create_data }}<br>
+<hr>
+{% endfor %}
+<br>
+<br>
+Урок:<hr>
+{% for g in lesson %}
+{{ g.daily_material }}<br>
+{{ g.group }}<br>
+{{ g.create_data }}<br>
+<hr>
+{% endfor %}
+<br>
+<br>
+д/з:<hr>
+{% for g in home_work %}
+{{ g.text|safe }}<br>
+{{ g.home_work }}<br>
+{{ g.create_data }}<br>
+<hr>
+{% endfor %}
+{% endblock %}

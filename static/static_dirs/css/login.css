@@ -1,0 +1,23 @@
+input{
+
+}
+.login-button{
+	width: 100%;
+	border: none;
+	color: #fff;
+	background: #4169e1;
+	height: 38px;
+	border-radius: 5px;
+}
+.box{
+	width: 350px;
+	margin: auto;
+	margin-top: 80px;
+}
+h4{
+	text-align: center;
+}
+.messages{
+	text-align: center;
+	margin-top: 29px;
+}

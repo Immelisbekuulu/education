@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/standart.css' %}">
+
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <div class="col-3"><a href="{% url 'create_groupe' %}">create grup</a></div>
+        <div class="col-3"><a href="{% url 'create_student' %}">create student</a></div>
+        <div class="col-3"><a href="{% url 'studyYear' %}">studyYear</a></div>
+        <div class="col-3"><a href="{% url 'create_homework' %}">create homework</a></div>
+        <!-- <div class="col-3"><a href="{% url 'result_ball' %}">result_ball</a></div> -->
+    </div>
+
+    <ul class="list-group">
+        <h4>group</h4>
+
+             <table class="table table-striped">
+
+                <tr>
+                    <th>Group</th>
+                    <th>Study Year</th>
+                    <th>Teacher</th>
+                    <th>Created date</th>
+                    <th>...</th>
+                    <th>...</th>
+                    <th>...</th>
+                    <th>...</th>
+                </tr>
+                 {% for g in group %}
+                <tr>
+                    <td><b>{{ g.title }}/</b></td>
+                    <td>{{ g.study_year }}</td>
+                    <td>{{ g.teacher }}</td>
+                    <td>{{ g.create_data }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm ml-5">
+                            <a class="text-white " href="{% url 'detail_group' g.id %}" role="button">
+                            detail
+                            </a>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm ml-5">
+                            <a class="text-white" href="{% url 'add_student' g.id %}" role="button">
+                                add student
+                            </a>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm ml-5">
+                            <a class="text-white" href="{% url 'create_lesson' g.id %}" role="button">
+                            create lesson
+                            </a>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm ml-5">
+                            <a class="text-white" href="{% url 'create_materyal' %}" role="button">
+                            create materyal
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+                 {% endfor %}
+            </table>
+
+
+    </ul>
+    <hr>
+<h4>Students</h4>
+                 <table class="table table-striped">
+
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Tel num</th>
+                    <th>Год рождения</th>
+                    <th>...</th>
+                </tr>
+                 {% for g in student %}
+                <tr>
+                    <td><b>{{ g.name }}/</b></td>
+                    <td>{{ g.surname }}</td>
+                    <td>{{ g.tel_num }}</td>
+                    <td>{{ g.year_data }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm ml-5">
+                            <a class="text-white " href="{% url 'delete_student' g.id %}" role="button">
+                                Delete
+                            </a>
+                        </button>
+                    </td>
+
+                </tr>
+                 {% endfor %}
+            </table>
+
+
+    <ul class="list-group">
+        <h4>add_student</h4>
+        {% for g in add_student%}
+            <li class="list-group-item">
+                {{ g.student }}/
+                {{ g.group }}/
+                {{ g.create_data }}
+                <a class="btn btn-primary" href="{% url 'attendance_student' g.id %}" role="button">
+                    attendance student
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <ul class="list-group">
+        <h4>attendence</h4>
+        {% for g in attendence%}
+            <li class="list-group-item">
+                {{ g.studentGroup }}/
+                {{ g.check_student }}/
+                {{ g.create_data }}
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <ul class="list-group">
+        <h4>date</h4>
+        {% for g in date %}
+            <li class="list-group-item">
+                {{ g.date }}
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <ul class="list-group">
+        <h4>lesson</h4>
+        {% for g in lesson %}
+            <li class="list-group-item">
+                <a class="btn btn-primary" href="{% url 'delete_lesson' g.id %}" role="button">delete_lesson</a>
+                {{ g.daily_material.all|join:", " }}/
+                {{ g.group }}/
+                {{ g.create_data }}
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <ul class="list-group">
+        <h4>dailyMaterial</h4>
+        {% for g in dailyMaterial %}
+            <li class="list-group-item">
+                {{ g.tema }}/
+                {{ g.text|safe }}/
+                {{ g.create_data }}
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <ul class="list-group">
+        <h4>homework</h4>
+        {% for g in homework %}
+            <li class="list-group-item">
+                {{ g.teacher }}/
+                {{ g.lesson.all|join:", " }}/
+                {{ g.text|safe }}/
+                {{ g.create_data }}
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+
+    </div>
+</body>
+</html>
